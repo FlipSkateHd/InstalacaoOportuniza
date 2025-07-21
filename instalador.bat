@@ -55,7 +55,10 @@ echo [+] Copiando e atualizando Projeto.txt...
 if exist "%SCRIPT_DIR%Projeto.txt" (
     copy "%SCRIPT_DIR%Projeto.txt" "%USERPROFILE%\Desktop\Projeto.txt" >nul
     powershell -Command ^
-        "(Get-Content '%USERPROFILE%\Desktop\Projeto.txt') | ForEach-Object { $_ -replace '^Máquina: POS-.*', 'Máquina: %NOMECOMPLETO%' } | Set-Content -Encoding UTF8 '%USERPROFILE%\Desktop\Projeto.txt'"
+    "$p = Get-Content -Raw '%USERPROFILE%\Desktop\Projeto.txt'; ^
+    $p = $p -replace 'Máquina: POS-.*', 'Máquina: %NOMECOMPLETO%'; ^
+    [System.IO.File]::WriteAllText('%USERPROFILE%\Desktop\Projeto.txt', $p, [System.Text.Encoding]::Default)"
+
     echo [✓] Projeto.txt copiado e atualizado com o nome da máquina: %NOMECOMPLETO%.
 ) else (
     echo [X] Arquivo Projeto.txt não encontrado.

@@ -1,4 +1,4 @@
-﻿# Instalador Automatizado com Tratamento de Erros
+# Instalador Automatizado com Tratamento de Erros
 # Compatível com Windows 10/11 22H2 Pro e Home
 $ErrorActionPreference = 'Stop'
 
@@ -137,7 +137,7 @@ Function Configurar-Foto {
     try {
         Write-Host "`n[+] Configurando foto do usuário..." -ForegroundColor Cyan
         
-        $scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
+        # Usar a variável global $scriptDir que já foi definida no início
         $imgOriginal = Join-Path $scriptDir "Oportuniza_WinCinza.png"
         
         if (-not (Test-Path $imgOriginal)) {

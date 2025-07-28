@@ -29,9 +29,14 @@ pasta_do_instalador/
 
 2. **Execute o script**
    ```powershell
+   Set-ExecutionPolicy Restricted
+   ```
+   Depois
+
+   ```powershell
    .\instalador.ps1
    ```
-
+   
 3. **Digite o sufixo da máquina** quando solicitado
    - Exemplo: "01", "SALA3", "LAB1"
    - O nome final será: "POS-[seu_sufixo]"
